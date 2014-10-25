@@ -14,7 +14,7 @@
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span> Hawker Centers</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="centers">Add</a></li>
-                                <li><a href="add-centers">List</a></li>
+                                <li><a href="centers/create">List</a></li>
                             </ul>
                         </li>
                     </ul>

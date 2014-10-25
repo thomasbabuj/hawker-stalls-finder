@@ -20,22 +20,22 @@
                      <table class="table table-striped table-bordered responsive">
                          <thead>
                          <tr>
-                             <th>Username</th>
-                             <th>Date registered</th>
-                             <th>Role</th>
+                             <th>Name</th>
+                             <th>Small Description</th>
+                             <th>Image</th>
                              <th>Status</th>
                              <th>Actions</th>
                          </tr>
                          </thead>
                          <tbody>
 
-
+                         @foreach( $centres as $centre )
                          <tr>
-                             <td>Muhammad Usman</td>
-                             <td class="center">2012/03/01</td>
-                             <td class="center">Member</td>
+                             <td>{{ $centre->name }}</td>
+                             <td class="center">{{ $centre->small_desc }}</td>
+                             <td class="center">{{ HTML::image('img/hawker_centers/'.$centre->image) }}</td>
                              <td class="center">
-                                 <span class="label-warning label label-default">Pending</span>
+                                 <span class="label-warning label label-default">{{ $centre->status }}</span>
                              </td>
                              <td class="center">
                                  <a class="btn btn-success" href="#">
@@ -52,72 +52,7 @@
                                  </a>
                              </td>
                          </tr>
-                         <tr>
-                             <td>Abraham</td>
-                             <td class="center">2012/03/01</td>
-                             <td class="center">Member</td>
-                             <td class="center">
-                                 <span class="label-warning label label-default">Pending</span>
-                             </td>
-                             <td class="center">
-                                 <a class="btn btn-success" href="#">
-                                     <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                     View
-                                 </a>
-                                 <a class="btn btn-info" href="#">
-                                     <i class="glyphicon glyphicon-edit icon-white"></i>
-                                     Edit
-                                 </a>
-                                 <a class="btn btn-danger" href="#">
-                                     <i class="glyphicon glyphicon-trash icon-white"></i>
-                                     Delete
-                                 </a>
-                             </td>
-                         </tr>
-                         <tr>
-                             <td>Brown Blue</td>
-                             <td class="center">2012/03/01</td>
-                             <td class="center">Member</td>
-                             <td class="center">
-                                 <span class="label-warning label label-default">Pending</span>
-                             </td>
-                             <td class="center">
-                                 <a class="btn btn-success" href="#">
-                                     <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                     View
-                                 </a>
-                                 <a class="btn btn-info" href="#">
-                                     <i class="glyphicon glyphicon-edit icon-white"></i>
-                                     Edit
-                                 </a>
-                                 <a class="btn btn-danger" href="#">
-                                     <i class="glyphicon glyphicon-trash icon-white"></i>
-                                     Delete
-                                 </a>
-                             </td>
-                         </tr>
-                         <tr>
-                             <td>Worth Name</td>
-                             <td class="center">2012/03/01</td>
-                             <td class="center">Member</td>
-                             <td class="center">
-                                 <span class="label-warning label label-default">Pending</span>
-                             </td>
-                             <td class="center">
-                                 <a class="btn btn-success" href="#">
-                                     <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                     View
-                                 </a>
-                                 <a class="btn btn-info" href="#">
-                                     <i class="glyphicon glyphicon-edit icon-white"></i>
-                                     Edit
-                                 </a>
-                                 <a class="btn btn-danger" href="#">
-                                     <i class="glyphicon glyphicon-trash icon-white"></i>
-                                     Delete
-                                 </a>
-                             </td>
-                         </tr>
+                         @endforeach
                          </tbody>
                      </table>
                  </div>

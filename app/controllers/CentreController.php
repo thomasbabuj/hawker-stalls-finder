@@ -10,7 +10,14 @@ class CentreController extends BaseController {
     public function getIndex()
     {
         return View::make('centres.index')
-                ->with('centers', Centre::all());
+                ->with('centres', Centre::all());
+    }
+
+    public function getCreate()
+    {
+
+        return View::make('centres.create');
+
     }
 
     public function postCreate()
@@ -38,11 +45,11 @@ class CentreController extends BaseController {
 
             $centre->save();
 
-            return Redirect::to('centres/index')
+            return Redirect::to('centres/create')
                     ->with('message', 'Centre Added');
         }
 
-        return Redirect::to('centres/index')
+        return Redirect::to('centres/create')
                     ->with('message', 'Something went wrong')
                     ->withErrors($validator)
                     ->withInput();
