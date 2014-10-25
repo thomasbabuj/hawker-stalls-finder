@@ -16,4 +16,4 @@ Route::get('/', function()
 	return View::make('layouts.main');
 });
 
-Route::controller('centres', CentreController);
+Route::controller('centres', 'CentreController');

@@ -9,7 +9,7 @@ class CentreController extends BaseController {
 
     public function getIndex()
     {
-        return View::make('centre.index')
+        return View::make('centres.index')
                 ->with('centers', Centre::all());
     }
 
