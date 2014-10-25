@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'hawker-stallsgit',
+			'database'  => 'hawker-stalls',
 			'username'  => 'homestead',
 			'password'  => 'secret',
 			'charset'   => 'utf8',
