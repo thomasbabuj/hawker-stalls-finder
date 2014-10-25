@@ -17,7 +17,6 @@ class Centre extends Eloquent {
         'total_cooked_food_stalls' => 'integer',
         'total_occupied_food_stalls' => 'integer',
         'longitude' => 'match:/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/',
-        'latitude' => 'match:/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/',
-        'status' => 'boolean'
+        'latitude' => 'match:/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/'
      );
 }
