@@ -78,4 +78,12 @@ class CentreController extends BaseController {
         return View::make('centres.show')
                         ->with('centre', $centre);
     }
+
+    public function getEdit($id)
+    {
+        $centre = Centre::find($id);
+
+        return View::make('centres.edit')
+            ->with('centre', $centre);
+    }
 }
