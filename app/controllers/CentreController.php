@@ -97,12 +97,24 @@ class CentreController extends BaseController {
 
         if ( empty( $post_values['image'] ) )
         {
-            $post_values['image'] = $centre->image;
+            $image = explode("/",$centre->image);
+            $post_values['image'] = $image[3];
             $no_upload = TRUE;
         }
 
-        $validator = Validator::make($post_values, Centre::$rules);
+        $rules = array(
+            'name' => 'required|alpha|min:5',
+            'small_desc' => 'required|min:20',
+            'long_desc' => 'required|min:100',
+            'image' => 'image|mimes:jpeg,jpg,png',
+            'total_nos_stalls' => 'integer',
+            'total_cooked_food_stalls' => 'integer',
+            'total_occupied_food_stalls' => 'integer',
+            'longitude' => 'match:/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/',
+            'latitude' => 'match:/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/'
+        );
 
+        $validator = Validator::make($post_values, $rules);
 
         if ( $validator->passes() ) {
             $centre = new Centre();

@@ -3,6 +3,19 @@
 
 @section('content')
 
+ @if ( $errors->has() )
+            <div id="form-errors">
+                <p>The following errors have occured:</p>
+                <ul>
+                    @foreach( $errors->all() as $error )
+                        <li>
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div> <!-- end form-errors -->
+        @endif
+
  <div class="row">
         <div class="box col-md-12">
             <div class="box-inner">
