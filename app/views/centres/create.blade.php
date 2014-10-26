@@ -36,22 +36,44 @@
                             {{ Form::textarea('long_desc', null, array('class' => 'form-control', 'placeholder' => 'Enter a short description')) }}
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="exampleInputFile">Choose an image</label>
+                            {{ Form::label('image', 'Choose an image') }}
+                            {{ Form::file('image') }}
+
+                            <p class="help-block">Use JPG or PNG files.</p>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <input type="file" id="exampleInputFile">
+                            {{ Form::label('total_nos_stalls') }}
+                            {{ Form::text('total_nos_stalls', null, array('class' => 'form-control', 'placeholder' => 'Enter total nos of stalls')) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('total_cooked_food_stalls') }}
+                            {{ Form::text('total_cooked_food_stalls', null, array('class' => 'form-control', 'placeholder' => 'Enter total cooked food stalls')) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('total_occupied_food_stalls') }}
+                            {{ Form::text('total_occupied_food_stalls', null, array('class' => 'form-control', 'placeholder' => 'Enter total occupied food stalls')) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('unique_qualities') }}
+                            {{ Form::text('unique_qualities', null, array('class' => 'form-control', 'placeholder' => 'Enter some unique qualities')) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('longitude') }}
+                            {{ Form::textarea('longitude', null, array('class' => 'form-control', 'placeholder' => 'Enter longitude')) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('latitude') }}
+                            {{ Form::text('latitude', null, array('class' => 'form-control', 'placeholder' => 'Enter latitude')) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('status') }}
+                            {{ Form::select('status', array('1' => 'Active' , '0' => 'Not Active')) }}
+                        </div>
 
-                            <p class="help-block">Example block-level help text here.</p>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Check me out
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
+                        {{ Form::submit('Create a center', array('class' => 'btn btn-default')) }}
+
+                    {{ Form::close() }}
 
                 </div>
             </div>
