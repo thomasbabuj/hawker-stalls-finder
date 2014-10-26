@@ -3,19 +3,6 @@
 
 @section('content')
 
-    <!-- Form Validation Errors -->
-    @if( $errors->has() )
-        <div id="form-errors">
-            <p>The following errors have occurred:</p>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <!-- End Form Validation Errors -->
-
     <div class="row">
         <div class="box col-md-12">
             <div class="box-inner">
@@ -33,24 +20,25 @@
                 </div>
                 <div class="box-content">
                     {{ Form::open( array('url' => 'centres/create', 'role' => 'form')) }}
-                        <div class="form-group">
+                        <div class="form-group @if ($errors->has('name')) has-error @endif" >
                             {{ Form::label('name') }}
                             {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Enter Name')) }}
+                            @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
                         </div>
-                        <div class="form-group">
+                        <div class="form-group @if ($errors->has('small_desc')) has-error @endif">
                             {{ Form::label('small_desc') }}
                             {{ Form::text('small_desc', null, array('class' => 'form-control', 'placeholder' => 'Enter a short description')) }}
+                            @if ($errors->has('small_desc')) <p class="help-block">{{ $errors->first('small_desc') }}</p> @endif
                         </div>
-                        <div class="form-group">
+                        <div class="form-group @if ($errors->has('long_desc')) has-error @endif">
                             {{ Form::label('long_desc') }}
                             {{ Form::textarea('long_desc', null, array('class' => 'form-control', 'placeholder' => 'Enter a short description')) }}
+                            @if ($errors->has('long_desc')) <p class="help-block">{{ $errors->first('long_desc') }}</p> @endif
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">Choose an image</label>
+                        <div class="form-group @if ($errors->has('image')) has-error @endif">
                             {{ Form::label('image', 'Choose an image') }}
                             {{ Form::file('image') }}
-
-                            <p class="help-block">Use JPG or PNG files.</p>
+                            @if ($errors->has('image')) <p class="help-block">{{ $errors->first('image') }}</p> @endif
                         </div>
                         <div class="form-group">
                             {{ Form::label('total_nos_stalls') }}
