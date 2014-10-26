@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="box-content">
-                    {{ Form::open( array('url' => 'centres/create', 'role' => 'form')) }}
+                    {{ Form::open( array('url' => 'centres/create', 'role' => 'form', 'files' => TRUE)) }}
                         <div class="form-group @if ($errors->has('name')) has-error @endif" >
                             {{ Form::label('name') }}
                             {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Enter Name')) }}
