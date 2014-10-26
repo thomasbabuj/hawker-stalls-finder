@@ -103,6 +103,7 @@ class CentreController extends BaseController {
 
         $validator = Validator::make($post_values, Centre::$rules);
 
+
         if ( $validator->passes() ) {
             $centre = new Centre();
             $centre->name = Input::get('name');
