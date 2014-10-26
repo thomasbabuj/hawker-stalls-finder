@@ -3,7 +3,17 @@
 
 @section('content')
 
-    <!-- Form Validation Errors ->
+    <!-- Form Validation Errors -->
+    @if( $errors->has() )
+        <div id="form-errors">
+            <p>The following errors have occurred:</p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <!-- End Form Validation Errors -->
 
     <div class="row">
