@@ -12,6 +12,7 @@ Form Validation related read
     http://www.sitepoint.com/data-validation-laravel-right-way/
     http://scotch.io/tutorials/php/laravel-form-validation
     
-Drag'n'drop file uploads js plugin
-
+DragNdrop file uploads js plugin
+    
     http://www.dropzonejs.com/
+    
