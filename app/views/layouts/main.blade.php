@@ -80,6 +80,14 @@
 
             @include('layouts.breadcrumb')
 
+            @if ( Session::has('message'))
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    {{ Session::get('message') }}
+                </div>
+            @endif
+
+
             @yield ('content')
 
         </div>

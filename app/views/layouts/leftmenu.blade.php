@@ -13,8 +13,10 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span> Hawker Centers</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="centers">Add</a></li>
-                                <li><a href="centers/create">List</a></li>
+                                <li>
+                                    {{ HTML::link('/centres/create', 'Add') }}
+                                </li>
+                                <li>{{ HTML::link('centres', 'List') }}</li>
                             </ul>
                         </li>
                     </ul>

@@ -32,9 +32,9 @@ class CentreController extends BaseController {
 
             $image = Input::file('image');
             $filename = time()."-".$image->getClientOriginalExtension();
-            $path = public_path('img/hawker_centers/'.$filename);
+            $path = public_path('img/uploads/hawker_centres/'.$filename);
             Image::make($image->getRealPath())->resize(468, 249)->save($path);
-            $centre->image = 'img/hawker_centers/'.$filename;
+            $centre->image = 'img/uploads/hawker_centres/'.$filename;
 
             $centre->total_nos_stalls = Input::get('total_nos_stalls');
             $centre->total_cooked_food_stalls = Input::get('total_cooked_food_stalls');
@@ -42,10 +42,11 @@ class CentreController extends BaseController {
             $centre->unique_qualities = Input::get('unique_qualities');
             $centre->longitude = Input::get('longitude');
             $centre->latitude = Input::get('latitude');
+            $centre->status = Input::get('status');
 
             $centre->save();
 
-            return Redirect::to('centres/create')
+            return Redirect::to('centres')
                     ->with('message', 'Centre Added');
         }
 
@@ -68,5 +69,86 @@ class CentreController extends BaseController {
 
         return Redirect::to('centres/index')
                 ->with('message', 'Something went wrong. Please try again!');
+    }
+
+    public function getShow($id)
+    {
+        $centre = Centre::find($id);
+
+        return View::make('centres.show')
+                        ->with('centre', $centre);
+    }
+
+    public function getEdit($id)
+    {
+        $centre = Centre::find($id);
+
+        return View::make('centres.edit')
+            ->with('centre', $centre);
+    }
+
+    public function postUpdate($id)
+    {
+        $post_values = Input::all();
+        $no_upload = FALSE;
+        print_r ($post_values);
+
+        $centre = Centre::find($id);
+
+        if ( empty( $post_values['image'] ) )
+        {
+            $image = explode("/",$centre->image);
+            $post_values['image'] = $image[3];
+            $no_upload = TRUE;
+        }
+
+        $rules = array(
+            'name' => 'required|alpha|min:5',
+            'small_desc' => 'required|min:20',
+            'long_desc' => 'required|min:100',
+            'image' => 'image|mimes:jpeg,jpg,png',
+            'total_nos_stalls' => 'integer',
+            'total_cooked_food_stalls' => 'integer',
+            'total_occupied_food_stalls' => 'integer',
+            'longitude' => 'match:/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/',
+            'latitude' => 'match:/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/'
+        );
+
+        $validator = Validator::make($post_values, $rules);
+
+        if ( $validator->passes() ) {
+            $centre = new Centre();
+            $centre->name = Input::get('name');
+            $centre->small_desc = Input::get('small_desc');
+            $centre->long_desc = Input::get('long_desc');
+
+            if( !$no_upload) {
+
+                $image = Input::file('image');
+                $filename = time()."-".$image->getClientOriginalExtension();
+                $path = public_path('img/uploads/hawker_centres/'.$filename);
+                Image::make($image->getRealPath())->resize(468, 249)->save($path);
+                $centre->image = 'img/uploads/hawker_centres/'.$filename;
+            }
+
+
+            $centre->total_nos_stalls = Input::get('total_nos_stalls');
+            $centre->total_cooked_food_stalls = Input::get('total_cooked_food_stalls');
+            $centre->total_occupied_food_stalls = Input::get('total_occupied_food_stalls');
+            $centre->unique_qualities = Input::get('unique_qualities');
+            $centre->longitude = Input::get('longitude');
+            $centre->latitude = Input::get('latitude');
+            $centre->status = Input::get('status');
+
+            $centre->save();
+
+            return Redirect::to('centres')
+                ->with('message', 'Centre Updated');
+        }
+
+        return Redirect::to('centres/edit/'.$id)
+            ->with('message', 'Something went wrong')
+            ->withErrors($validator)
+            ->withInput();
     }
 }
