@@ -70,4 +70,12 @@ class CentreController extends BaseController {
         return Redirect::to('centres/index')
                 ->with('message', 'Something went wrong. Please try again!');
     }
+
+    public function getShow($id)
+    {
+        $centre = Centre::find($id);
+
+        return View::make('centres.show')
+                        ->with('centre', $centre);
+    }
 }

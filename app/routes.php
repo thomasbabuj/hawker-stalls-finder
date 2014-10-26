@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('layouts.main');
-});
+Route::get('/', array('uses' => 'CentreController@getIndex'));
 
 Route::controller('centres', 'CentreController');

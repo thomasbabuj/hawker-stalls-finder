@@ -36,11 +36,11 @@
                                  <span class="label-warning label label-default">{{ $centre->status }}</span>
                              </td>
                              <td class="center">
-                                 <a class="btn btn-success" href="#">
+                                 <a class="btn btn-success" href="{{ url('centres/'.$centre->id) }}">
                                      <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                      View
                                  </a>
-                                 <a class="btn btn-info" href="#">
+                                 <a class="btn btn-info" href="{{ url('centres/'.$centre->id.'/edit' ) }}">
                                      <i class="glyphicon glyphicon-edit icon-white"></i>
                                      Edit
                                  </a>
