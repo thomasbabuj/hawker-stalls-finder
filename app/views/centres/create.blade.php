@@ -39,6 +39,7 @@
                             {{ Form::label('image', 'Choose an image') }}
                             {{ Form::file('image') }}
                             @if ($errors->has('image')) <p class="help-block">{{ $errors->first('image') }}</p> @endif
+                            {{ Form::hidden('center_image', $centre->image) }}
                         </div>
                         <div class="form-group">
                             {{ Form::label('total_nos_stalls') }}
@@ -69,7 +70,7 @@
                             {{ Form::select('status', array('1' => 'Active' , '0' => 'Not Active')) }}
                         </div>
 
-                        {{ Form::submit('Create a center', array('class' => 'btn btn-default')) }}
+                        {{ Form::submit('Create a center', array('class' => 'btn btn-primary btn-lg')) }}
 
                     {{ Form::close() }}
 

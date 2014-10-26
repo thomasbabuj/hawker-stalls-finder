@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="box-content">
-                    {{ Form::open( array('url' => 'centres/create', 'role' => 'form', 'files' => TRUE)) }}
+                    {{ Form::open( array('url' => 'centres/update/'.$centre->id, 'role' => 'form', 'files' => TRUE)) }}
                         <div class="form-group @if ($errors->has('name')) has-error @endif" >
                             {{ Form::label('name') }}
                             {{ Form::text('name', $centre->name , array('class' => 'form-control', 'placeholder' => 'Enter Name')) }}
@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-group">
                             {{ Form::label('unique_qualities') }}
-                            {{ Form::text('unique_qualities', $centre->unique_qualities, array('class' => 'form-control', 'placeholder' => 'Enter some unique qualities')) }}
+                            {{ Form::textarea('unique_qualities', $centre->unique_qualities, array('class' => 'form-control', 'placeholder' => 'Enter some unique qualities')) }}
                         </div>
                         <div class="form-group">
                             {{ Form::label('longitude') }}
@@ -69,7 +69,7 @@
                             {{ Form::select('status', array('1' => 'Active' , '0' => 'Not Active'), $centre->status) }}
                         </div>
 
-                        {{ Form::submit('Create a center', array('class' => 'btn btn-default')) }}
+                        {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg')) }}
 
                     {{ Form::close() }}
 
