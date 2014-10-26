@@ -21,7 +21,6 @@
                          <thead>
                          <tr>
                              <th>Name</th>
-                             <th>Small Description</th>
                              <th>Image</th>
                              <th>Status</th>
                              <th>Actions</th>
@@ -32,8 +31,7 @@
                          @foreach( $centres as $centre )
                          <tr>
                              <td>{{ $centre->name }}</td>
-                             <td class="center">{{ $centre->small_desc }}</td>
-                             <td class="center">{{ HTML::image('img/hawker_centers/'.$centre->image) }}</td>
+                             <td class="center">{{ HTML::image($centre->image, $centre->name, array('width' => '100', 'height' => '100')) }}</td>
                              <td class="center">
                                  <span class="label-warning label label-default">{{ $centre->status }}</span>
                              </td>

@@ -34,7 +34,7 @@ class CentreController extends BaseController {
             $filename = time()."-".$image->getClientOriginalExtension();
             $path = public_path('img/uploads/hawker_centres/'.$filename);
             Image::make($image->getRealPath())->resize(468, 249)->save($path);
-            $centre->image = 'img/hawker_centers/'.$filename;
+            $centre->image = 'img/uploads/hawker_centres/'.$filename;
 
             $centre->total_nos_stalls = Input::get('total_nos_stalls');
             $centre->total_cooked_food_stalls = Input::get('total_cooked_food_stalls');
@@ -42,10 +42,11 @@ class CentreController extends BaseController {
             $centre->unique_qualities = Input::get('unique_qualities');
             $centre->longitude = Input::get('longitude');
             $centre->latitude = Input::get('latitude');
+            $centre->status = Input::get('status');
 
             $centre->save();
 
-            return Redirect::to('centres/create')
+            return Redirect::to('centres')
                     ->with('message', 'Centre Added');
         }
 
