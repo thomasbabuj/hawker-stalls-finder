@@ -32,7 +32,7 @@ class CentreController extends BaseController {
 
             $image = Input::file('image');
             $filename = time()."-".$image->getClientOriginalExtension();
-            $path = public_path('img/hawker_centers/'.$filename);
+            $path = public_path('img/uploads/hawker_centres/'.$filename);
             Image::make($image->getRealPath())->resize(468, 249)->save($path);
             $centre->image = 'img/hawker_centers/'.$filename;
 
