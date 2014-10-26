@@ -40,7 +40,7 @@
                                      <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                      View
                                  </a>
-                                 <a class="btn btn-info" href="{{ url('centres/'.$centre->id.'/edit' ) }}">
+                                 <a class="btn btn-info" href="{{ url('centres/edit/'.$centre->id ) }}">
                                      <i class="glyphicon glyphicon-edit icon-white"></i>
                                      Edit
                                  </a>
