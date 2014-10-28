@@ -9,7 +9,7 @@ class Centre extends Eloquent {
     );
 
     public static $rules = array(
-        'name' => 'required|alpha|min:5',
+        'name' => 'required|alpha_spaces|min:5',
         'small_desc' => 'required|min:20',
         'long_desc' => 'required|min:100',
         'image' => 'required|image|mimes:jpeg,jpg,png',
