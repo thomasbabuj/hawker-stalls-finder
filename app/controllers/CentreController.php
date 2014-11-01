@@ -60,7 +60,7 @@ class CentreController extends BaseController {
         if ($centre)
         {
             $centre->delete();
-            return Redirec::to('centres/index')
+            return Redirect::to('centres/index')
                     ->with('message', 'Centre Deleted');
         }
 

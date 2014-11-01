@@ -44,10 +44,13 @@
                                      <i class="glyphicon glyphicon-edit icon-white"></i>
                                      Edit
                                  </a>
-                                 <a class="btn btn-danger" href="#">
+                                 {{ Form::open( array('url' => 'centres/delete/', 'id' => "submit-form") ) }}
+                                 {{ Form::hidden('id', $centre->id) }}
+                                 <a class="btn btn-danger btn-info btn-setting" href="#">
                                      <i class="glyphicon glyphicon-trash icon-white"></i>
                                      Delete
                                  </a>
+                                 {{ Form::close() }}
                              </td>
                          </tr>
                          @endforeach
@@ -59,5 +62,39 @@
          <!--/span-->
 
      </div><!--/row-->
+
+    <!-- Delete Confirmation dialog box -->
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal">×</button>
+                     <h3>Confirm Delete</h3>
+                 </div>
+                 <div class="modal-body">
+                     <p>Kindly confirm the delete?</p>
+                 </div>
+                 <div class="modal-footer">
+                     <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                     <a href="#" class="btn btn-primary" data-dismiss="modal" id="btn-remove-data">Delete</a>
+                 </div>
+             </div>
+         </div>
+     </div> <!-- End - Delete Confirmation dialog box -->
+
+     <script>
+        $(".btn-setting").click(function(e){
+            e.preventDefault();
+            $("#myModal").modal('show');
+        });
+
+        $("#btn-remove-data").click(function(e){
+            e.preventDefault();
+            $("#submit-form").submit();
+
+        });
+     </script>
 
 @stop()
