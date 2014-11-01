@@ -36,7 +36,7 @@
                                  <span class="label-warning label label-default">{{ $centre->status }}</span>
                              </td>
                              <td class="center">
-                                 <a class="btn btn-success" href="{{ url('centres/'.$centre->id) }}">
+                                 <a class="btn btn-success" href="{{ url('centres/show/'.$centre->id) }}">
                                      <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                      View
                                  </a>
