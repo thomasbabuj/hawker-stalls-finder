@@ -22,19 +22,16 @@ class CentreController extends BaseController {
 
     public function postCreate()
     {
-        $validator = Validator::make(Input::all(), Centre::$rules);
+        $centre = new Centre();
+        $validator = Validator::make(Input::all(), $centre->rules);
 
         if ( $validator->passes() ) {
-            $centre = new Centre();
+
             $centre->name = Input::get('name');
             $centre->small_desc = Input::get('small_desc');
             $centre->long_desc = Input::get('long_desc');
 
-            $image = Input::file('image');
-            $filename = time()."-".$image->getClientOriginalExtension();
-            $path = public_path('img/uploads/hawker_centres/'.$filename);
-            Image::make($image->getRealPath())->resize(468, 249)->save($path);
-            $centre->image = 'img/uploads/hawker_centres/'.$filename;
+            $centre->image = $this->postImageUpload(Input::file('image'));
 
             $centre->total_nos_stalls = Input::get('total_nos_stalls');
             $centre->total_cooked_food_stalls = Input::get('total_cooked_food_stalls');
@@ -104,10 +101,7 @@ class CentreController extends BaseController {
             $image = Input::file('image');
             if( isset( $image ) )
             {
-                $filename = time()."-".$image->getClientOriginalExtension();
-                $path = public_path('img/uploads/hawker_centres/'.$filename);
-                Image::make($image->getRealPath())->resize(468, 249)->save($path);
-                $centre->image = 'img/uploads/hawker_centres/'.$filename;
+                $centre->image = $this->postImageUpload ( $image );
             }
 
             $centre->total_nos_stalls = Input::get('total_nos_stalls');
